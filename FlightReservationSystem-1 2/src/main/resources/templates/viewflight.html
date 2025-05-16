@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+	 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"/>
+	<script
+	 src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+	 <link rel="stylesheet"
+	 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+
+
+	
+	<div class="col-5">
+	<div class="container">  
+	<div class="card" style="width : fit-content; margin:5%; margin-left: 30%">
+	<div class="card-header bg-info text-center text-white" style="width: 100%">
+	<h3>List of Flights</h3>
+	
+	</div>
+	<div class="card-body">
+	<table class="table table-hover">
+	<tr class="bg-dark text-white">
+	<th scope="col">Id</th>
+	<th scope="col">Flight Name</th>
+	<th scope="col">First Class Capacity</th>
+	<th scope="col">Business Class Capacity</th>
+	<th scope="col">Economy Class Capacity</th>
+	<th scope="col">First Class Fair</th>
+	<th scope="col">Business Class Fair</th>
+	<th scope="col">Economy Class Fair</th>
+	<th scope="col">First Class Res Capacity</th>
+	<th scope="col">Business Class Res Capacity</th>
+	<th scope="col">Economy Class Res Capacity</th>
+	<th scope="col">Delete and Edit</th>
+	</tr>
+	<tr th:each="app:${list}">
+	<td th:text="${app.id}"></td>
+	<td th:text="${app.fname}"></td>
+	<td th:text="${app.fcapacity}"></td>
+	<td th:text="${app.bcapacity}"></td>
+	<td th:text="${app.ecapacity}"></td>
+	<td th:text="${app.ffair}"></td>
+	<td th:text="${app.bfair}"></td>
+	<td th:text="${app.efair}"></td>
+	<td th:text="${app.frescapacity}"></td>
+	<td th:text="${app.brescapacity}"></td>
+	<td th:text="${app.erescapacity}"></td>
+	<td><a th:href="@{/admin/delete(id=${app.id})}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a><br>
+	<a th:href="@{/admin/edit(id=${app.id})}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+	</tr>
+	</table>
+	<a th:href="@{/admin}" class="btn btn-success">Add Flights<i class="fa fa-plus-square" aria-hidden="true"></i></a>
+	<a th:href="@{/admin/}" class="btn btn-primary">Go to Home</a>
+	</div>
+	<div class="card-footer bg-white text-success" th:if="${message!=null}">
+	<span th:text="${message}"></span>
+	</div>
+	</div>
+	</div>
+	</div>
+
+</body>
+</html>
